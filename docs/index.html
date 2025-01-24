@@ -20,11 +20,11 @@
                 const bookList = document.getElementById('book-list');
                 files.forEach(file => {
                     if (file.name.endsWith('.txt')) {
-                        const li = document.createElement('li');
-                        const a = document.createElement('a');
-                        a.href = file.download_url;
-                        a.textContent = file.name.replace('.txt', '');
-                        a.target = '_blank';
+                        const li = document.createElement("li");
+                        const a = document.createElement("a");
+                        a.href = `${baseURL}/books/${book}`;
+                        a.textContent = book.replace(".txt", "");
+                        a.target = "_blank";
                         li.appendChild(a);
                         bookList.appendChild(li);
                     }
