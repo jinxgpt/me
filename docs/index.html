@@ -13,7 +13,7 @@
     <script>
         const repo = 'jinxgpt/me';
         const apiUrl = `https://api.github.com/repos/${repo}/contents/docs/books`;
-
+        const baseURL = "https://jinxgpt.github.io/me";
         fetch(apiUrl)
             .then(response => response.json())
             .then(files => {
