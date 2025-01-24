@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookshelf</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>My Bookshelf</h1>
+    <ul id="book-list"></ul>
+
+    <script>
+        const repo = 'jinxgpt/me';
+        const apiUrl = `https://api.github.com/repos/${repo}/docs/books`;
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(files => {
+                const bookList = document.getElementById('book-list');
+                files.forEach(file => {
+                    if (file.name.endsWith('.txt')) {
+                        const li = document.createElement('li');
+                        const a = document.createElement('a');
+                        a.href = file.download_url;
+                        a.textContent = file.name.replace('.txt', '');
+                        a.target = '_blank';
+                        li.appendChild(a);
+                        bookList.appendChild(li);
+                    }
+                });
+            })
+            .catch(error => console.error('Error fetching book list:', error));
+    </script>
+</body>
+</html>
